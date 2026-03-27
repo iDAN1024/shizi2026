@@ -167,10 +167,10 @@ function loadWord() {
             width: 280,
             height: 280,
             padding: 20,
-            strokeWidth: 20,
-            strokeColor: '#333',
+            strokeWidth: 35,
+            strokeColor: '#ff5722',
             highlightColor: '#ff9800',
-            outlineColor: '#ddd',
+            outlineColor: '#000',
             strokeAnimationSpeed: 1.2,
             delayBetweenStrokes: 300,
             showCharacter: false,
@@ -234,7 +234,11 @@ function playAnimation() {
 function startQuiz() {
     if (!writer) return;
     isQuizMode = true;
+    // 进入书写模式：轮廓变灰，笔画加粗
+    writer.updateColor('outlineColor', '#ccc');
     writer.quiz({
+        strokeWidth: 40,
+        strokeColor: '#ff5722',
         onComplete: onQuizSuccess,
         onCorrectStroke: () => console.log('笔画正确'),
         onMistake: (data) => console.log('错误:', data)
